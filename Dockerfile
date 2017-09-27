@@ -23,8 +23,11 @@ ADD php-fpm.conf /etc/php5/fpm/php-fpm.conf
 # Create the folder for storing tls certificates for rsyslog
 RUN mkdir -p /etc/rsyslog.d/keys/ca.d
 
-# Add
+# Add the init script
 ADD init.sh /opt/init/init.sh
 RUN chmod +x /opt/init/init.sh
+
+# Add the docker-friendly rsyslog.conf file
+ADD rsyslog.conf /etc/rsyslog.conf
 
 CMD ["/opt/init/init.sh"]
